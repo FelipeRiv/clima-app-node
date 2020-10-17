@@ -75,20 +75,21 @@ const getInfo = async (direccion) => {
                })
                .catch(console.log);
                
- 
 }
 
-getInfo(argv.direccion);
 
+// -- Resumida Async Await
 const getInfo2 = async (direccion) => {
 
-     
      try {
+          
     
           const coords = await lugar.getLugarLatLng(direccion);
 
           const temp = await clima.getClima(coords.lat, coords.longt);
 
+          console.log(`--------------------------------------------`);
+          
           return `El clima de ${coords.direccion} es de ${temp.temp}`;
 
      } catch (e) {
@@ -97,7 +98,12 @@ const getInfo2 = async (direccion) => {
 
 }
 
+// -- Metodo 1
+getInfo(argv.direccion);
 
-// getInfo2(argv.direccion)
-//         .then(console.log)
-//         .catch(console.log);
+
+
+// -- Metodo 2 As-Aw Resumida
+getInfo2(argv.direccion)
+        .then(console.log)
+        .catch(console.log);

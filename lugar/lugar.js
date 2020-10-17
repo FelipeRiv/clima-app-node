@@ -1,12 +1,9 @@
 const axios = require('axios');
 
 // console.log(argv.direccion);
-
 // const direccion = argv.direccion;
 // const encodedDireccion = encodeURI(direccion);
-
 // console.log('encodeULR', encodedDireccion);
-
 // const URI = `https://geocode.xyz/${encodedDireccion}?json=1`;
 
 
@@ -15,8 +12,7 @@ const getLugarLatLng = async (direccionParam) => {
     // -- 3-3 Fernando sin ponerle headers - adaptacion
 
     const encodedDireccion = encodeURI(direccionParam);
-    console.log(`encodedDireccion`);
-    console.log(`${encodedDireccion}`);
+  
     const URI = `https://geocode.xyz/${encodedDireccion}?json=1`;
               // https://geocode.xyz/madrid?json=1   
 
@@ -26,13 +22,6 @@ const getLugarLatLng = async (direccionParam) => {
     });
 
     const resp = await instance.get();
-
-    // if (!resp.success) {
-    //     // throw new Error('Error de consulta para', direccionParam, ' - ', resp.error.code, ' - ', resp.error.message);
-    //     throw new Error('Error de consulta para');
-    // }
-
-    // resp.success: FALSE
 
     const data = resp.data;
     const direccion = data.standard.city;
@@ -46,10 +35,6 @@ const getLugarLatLng = async (direccionParam) => {
             lat,
             longt
         }
-    // const direccion = resp.data.standard.city;
-    // return{
-    //     direccion
-    // }
 
 }
 
@@ -59,7 +44,7 @@ const getLugarLatLng = async (direccionParam) => {
 // ? retorno solo la promesa acá con axios
 const getInfoPromise = () => axios.get(URI);
 
-//? trato el then ycatch acá
+//? trato el then y catch acá
 // const getInfoThen = () => {
 
 //     getInfoPromise()
